@@ -1,5 +1,8 @@
 package httpReceiver.service;
 
+import org.json.simple.JSONObject;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,10 +13,9 @@ public class infoController {
 		return "Hello";
 	}
 	
-//	@PostMapping("info")
-//	public boolean postInfo(String info) 
-//	{
-//		JSONObject obj = new JSONObject();
-//		return false;	
-//	}
+	@PostMapping("info")
+	public JSONObject postInfo(@RequestBody JSONObject info) 
+	{
+		return info;
+	}
 }
