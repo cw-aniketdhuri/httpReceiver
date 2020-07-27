@@ -1,13 +1,18 @@
 package httpReceiver;
 
+import org.apache.kafka.common.security.JaasUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+	"httpReceiver",
+	"httpReceiver.service",
+	"httpReceiver.logic"
+})
 public class MainApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.setProperty("java.security.auth.login.config", "jaas.config");
 		SpringApplication.run(MainApp.class, args);
 	}
 
