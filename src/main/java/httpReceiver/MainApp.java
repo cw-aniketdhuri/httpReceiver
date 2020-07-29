@@ -1,6 +1,5 @@
 package httpReceiver;
 
-import org.apache.kafka.common.security.JaasUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

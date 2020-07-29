@@ -7,6 +7,7 @@ import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.config.SaslConfigs;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,13 +23,13 @@ public class kafkaConfig {
 	private String kafkaServer;
 	
 	@Bean
-	public KafkaTemplate<String, String> kafkaTemplate(){
+	public KafkaTemplate<String, JSONObject> kafkaTemplate(){
 		Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
 		return new KafkaTemplate<>(producerConfig());
 	}
 	
 	@Bean
-	public ProducerFactory<String, String> producerConfig(){
+	public ProducerFactory<String, JSONObject> producerConfig(){
 		Map<String, Object> config = new HashMap<>();
 		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);

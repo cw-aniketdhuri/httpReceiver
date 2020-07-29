@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import org.apache.kafka.clients.producer.ProducerConfig;
-
 @Component
 public class KafkaProducer implements Producer {
 
@@ -15,11 +13,11 @@ public class KafkaProducer implements Producer {
     private String topic;
 
 	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate<String, JSONObject> kafkaTemplate;
 	@Override
 	public void send(JSONObject message)
 	{
-		kafkaTemplate.send(topic, "name");
+		kafkaTemplate.send(topic, message);
 	}
 
 }
